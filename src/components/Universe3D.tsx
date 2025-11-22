@@ -8,6 +8,7 @@ import { Memory, SiteSettings, DeviceCapabilities } from '@/types/memory';
 import MemoryNode from './MemoryNode';
 import HeartStar from './HeartStar';
 import ParticleField from './ParticleField';
+import MemoryModal from './MemoryModal';
 
 interface Universe3DProps {
   memories: Memory[];
