@@ -124,12 +124,12 @@ export default function Navigation({ className = '' }: NavigationProps) {
 
           {/* Mobile music toggle */}
           <div className="border-t border-white/10 mt-2 pt-2">
-            <button className="w-full text-left px-3 py-2 rounded-md text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--glass-bg)] transition-colors flex items-center">
-              <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
-              </svg>
-              Toggle Music
-            </button>
+            <div className="px-3 py-2">
+              <div className="flex items-center justify-between">
+                <span className="text-[var(--text-secondary)]">Background Music</span>
+                <MusicToggle />
+              </div>
+            </div>
           </div>
         </div>
       </div>
