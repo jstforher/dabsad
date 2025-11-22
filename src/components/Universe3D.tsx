@@ -171,15 +171,28 @@ export default function Universe3D({ memories, settings, deviceCapabilities }: U
         )}
       </Canvas>
 
-      {/* Memory modal would be rendered here */}
-      {/* {selectedMemory && (
-        <MemoryModal
-          memory={selectedMemory}
-          onClose={() => setSelectedMemory(null)}
-          onNext={() => {/* Navigate to next memory *\/}}
-          onPrevious={() => {/* Navigate to previous memory *\/}}
-        />
-      )} */}
+      {/* Memory modal */}
+      {selectedMemory && (
+        <div className="fixed inset-0 z-50 pointer-events-none">
+          <MemoryModal
+            memory={selectedMemory}
+            isOpen={!!selectedMemory}
+            onClose={() => setSelectedMemory(null)}
+            onNext={() => {
+              const currentIndex = memories.findIndex(m => m.id === selectedMemory.id);
+              const nextIndex = (currentIndex + 1) % memories.length;
+              setSelectedMemory(memories[nextIndex]);
+            }}
+            onPrevious={() => {
+              const currentIndex = memories.findIndex(m => m.id === selectedMemory.id);
+              const prevIndex = currentIndex === 0 ? memories.length - 1 : currentIndex - 1;
+              setSelectedMemory(memories[prevIndex]);
+            }}
+            hasNext={memories.length > 1}
+            hasPrevious={memories.length > 1}
+          />
+        </div>
+      )}
     </div>
   );
 }
