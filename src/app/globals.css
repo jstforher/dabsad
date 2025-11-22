@@ -1,26 +1,152 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@300;400;500&display=swap');
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-primary: #0b1020;
+  --bg-secondary: #1a1f3a;
+  --accent-primary: #9b6cff;
+  --accent-secondary: #ff6b8a;
+  --accent-star: #f6f7ff;
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --text-primary: #ffffff;
+  --text-secondary: #b8b8d1;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-background: var(--bg-primary);
+  --color-foreground: var(--text-primary);
+  --font-sans: var(--font-inter);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Glass morphism utility class */
+.glass-morphism {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Romantic gradient backgrounds */
+.romantic-gradient {
+  background: linear-gradient(135deg, #9b6cff 0%, #ff6b8a 100%);
+}
+
+.romantic-gradient-subtle {
+  background: linear-gradient(135deg, rgba(155, 108, 255, 0.1) 0%, rgba(255, 107, 138, 0.1) 100%);
+}
+
+/* Smooth animations */
+* {
+  transition: all 0.3s ease;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-secondary);
+}
+
+/* Loading animation */
+@keyframes pulse-romantic {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.pulse-romantic {
+  animation: pulse-romantic 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Heart beat animation for special effects */
+@keyframes heart-beat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.heart-beat {
+  animation: heart-beat 1.5s ease-in-out infinite;
+}
+
+/* Glow effect */
+.glow-primary {
+  box-shadow: 0 0 20px rgba(155, 108, 255, 0.5);
+}
+
+.glow-secondary {
+  box-shadow: 0 0 20px rgba(255, 107, 138, 0.5);
+}
+
+/* Text shadow for better readability */
+.text-shadow {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Button hover effects */
+.btn-romantic {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-romantic::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn-romantic:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+  }
 }
